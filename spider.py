@@ -1,3 +1,5 @@
+import json
+
 from dao.mysql_writer import MysqlWriter
 from dao.downloader import Downloader
 from parser.weibo_parser import WeiboParser
@@ -25,12 +27,9 @@ class Spider:
 
 
 if __name__ == "__main__":
-    config = {
-        'since_date': '20220301',
-        'end_date': '20220502',
-        'pic_download': True,
-        'video_download': True
-    }
+    # 读取配置文件
+    with open("config.json", 'r') as f:
+        config = json.loads(f.read())
     spider = Spider(config)
     user_name = input("请输入要爬取的用户名：")
     uid = spider.user_parser.get_uid(user_name)
