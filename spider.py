@@ -13,7 +13,7 @@ class Spider:
         self.writer = MysqlWriter()
         # self.writer = JsonWriter()
         self.downloader = Downloader(config)
-    
+
     def run(self, uid):
         # 爬取并保存用户info
         user = self.user_parser.parse_user(uid)
